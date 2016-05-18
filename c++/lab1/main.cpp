@@ -4,28 +4,35 @@ using namespace std;
 
 struct Order
 {
-    double GetOrder, SendOrder, TransferAmount;
+    public:
+        double GainAmount, SendAmount, TransferAmount;
 };
 
-int sort (int *arr[], int size)
+void swapValues (Order &order1, Order &order2)
+{
+    Order temp;
+    temp = order2;
+    order2 = order1;
+    order1 = temp;
+    delete &temp;
+}
+
+double sort (Order orders[], int size)
 {
     if (size <= 0)
         cerr << "Invalid size" << endl;
 
-    int *newarr = new int[size]; int temp;
+    int temp;
 
-    /* Сортировка массива пузырьком */
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = 0; j < size - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                temp = newarr[j];
-                arr[j] = arr[j + 1];
-                newarr[j + 1] = temp;
-            }
+    for (int i = 0; i < size - 1; i++)
+    {
+        for (int j = 0; j < size - 1; j++)
+        {
+            //temp = orders[j].;
+            if ((orders[j].GainAmount + orders[j].SendAmount + orders[j].TransferAmount) < (orders[j + 1].GainAmount + orders[j + 1].SendAmount + orders[j + 1].TransferAmount))
+                swapValues(orders[j], orders[j + 1]);
         }
     }
-
-    return *newarr;
 }
 
 void GetCheckValue ()
