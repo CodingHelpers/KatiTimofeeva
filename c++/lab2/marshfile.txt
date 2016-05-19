@@ -1,0 +1,4 @@
+Saint-Petersburg Moscow 1
+Moscow Voronezh 2
+New-York Vladivostok 3
+Sochi Krasnodar 4
