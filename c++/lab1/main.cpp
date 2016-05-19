@@ -5,8 +5,13 @@ using namespace std;
 struct Order
 {
     public:
-        double GainAmount, SendAmount, TransferAmount;
+        double PayAmount, GainAmount, TransferAmount;
 };
+
+double sum(const Order orders[], int index)
+{
+    return (orders[index].PayAmount + orders[index].GainAmount + orders[index].TransferAmount);
+}
 
 void swapValues (Order &order1, Order &order2)
 {
@@ -17,10 +22,10 @@ void swapValues (Order &order1, Order &order2)
     delete &temp;
 }
 
-double sort (Order orders[], int size)
+double sort (Order orders[], int size) /* size обычно есть sizeof(order)/sizeof(order[0]) */
 {
     if (size <= 0)
-        cerr << "Invalid size" << endl;
+        cerr << "Неверный размер" << endl;
 
     int temp;
 
@@ -28,16 +33,21 @@ double sort (Order orders[], int size)
     {
         for (int j = 0; j < size - 1; j++)
         {
-            //temp = orders[j].;
-            if ((orders[j].GainAmount + orders[j].SendAmount + orders[j].TransferAmount) < (orders[j + 1].GainAmount + orders[j + 1].SendAmount + orders[j + 1].TransferAmount))
+            if (sum(orders[], j) < sum(orders[], j + 1))
                 swapValues(orders[j], orders[j + 1]);
         }
     }
 }
 
-void GetCheckValue ()
+void GetCheckValue (Order orders[])
 {
-
+    int Payment;
+    cin >> Payment;
+    for (int i = 0; i < (sizeof(orders)/sizeof(orders[0])); i++)
+    {
+        if (Payment == orders->GainAmount)
+            cout << "Совпадение: " << orders->GainAmount << " в счёте №" << i << endl;
+    }
 }
 
 int main (int argc, char *argv[])
