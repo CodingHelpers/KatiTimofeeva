@@ -33,7 +33,7 @@ double sort (Order orders[], int size) /* size обычно есть sizeof(orde
     {
         for (int j = 0; j < size - 1; j++)
         {
-            if (sum(orders[], j) < sum(orders[], j + 1))
+            if (sum(orders[], j) < sum(orders[], j + 1)) //FIXME
                 swapValues(orders[j], orders[j + 1]);
         }
     }
